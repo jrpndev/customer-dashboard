@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   db1:
     image: mysql:latest
     environment:
@@ -7,6 +8,10 @@ services:
       MYSQL_DATABASE: customers
     volumes:
       - db1_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - test
 
   db2:
     image: mysql:latest
@@ -15,6 +20,16 @@ services:
       MYSQL_DATABASE: orders
     volumes:
       - db2_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - test
+
+networks:
+  test:
+    external: true
+  internal:
+    internal: true
 
 volumes:
   db1_data:

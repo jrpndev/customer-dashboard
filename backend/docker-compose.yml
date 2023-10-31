@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  test:
+    external: true
+  internal:
+    internal: true
+
+services:
+  backend:
+    image: node:latest
+    working_dir: /usr/src/app
+    volumes:
+      - /root/tests/customer-dashboard/backend:/usr/src/app
+    ports:
+      - "3000:3000"
+    command: npm run test
+    networks:
+      - test
