@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db1:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: customers
+    volumes:
+      - db1_data:/var/lib/mysql
+
+  db2:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: orders
+    volumes:
+      - db2_data:/var/lib/mysql
+
+volumes:
+  db1_data:
+  db2_data:
